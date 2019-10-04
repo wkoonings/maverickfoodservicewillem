@@ -15,6 +15,8 @@
         <input type="submit" value="login"/>
         <input type="hidden" name="next" value="{{ next }}"/>
     </form>
+If you don't have an account <a href="{% url 'crm:register' %}}">register here</a>
+<br/>
 <p><a href="{% url "password_reset" %}">Forgotten your
  password?</a></p>
 {% endblock %}
