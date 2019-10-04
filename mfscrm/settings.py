@@ -45,6 +45,12 @@ INSTALLED_APPS = [
 
 ]
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'nXmcMtuvff@gmail.com'
+EMAIL_HOST_PASSWORD = 'rmkipVIObEEnIuQrzHDK'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = 'True'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
