@@ -57,12 +57,12 @@ def service_new(request):
         return render(request, 'crm/service_new.html', {'form': form})
 
 @login_required()
-def service_edit(request):
+def service_edit(request, pk):
     service = get_object_or_404(Service, pk=pk)
     if request.method == "POST":
         form = ServiceForm(request.POST, instance=service)
         if form.is_valid():
-            service = form.save()
+            service = form.save(commit=False)
             service.updated_date = timezone.now()
             service.save()
             service = Service.objects.filter(created_date__lte=timezone.now())
@@ -75,7 +75,7 @@ def service_edit(request):
 def service_delete(request, pk):
    service = get_object_or_404(Service, pk=pk)
    service.delete()
-   return redirect('crm/service_list')
+   return redirect('crm:service_list')
 
 @login_required()
 def product_list(request):
@@ -100,15 +100,15 @@ def product_new(request):
 def product_delete(request, pk):
     product = get_object_or_404(Product, pk=pk)
     product.delete()
-    return redirect('crm/product_list')
+    return redirect('crm:product_list')
 
 @login_required()
-def product_edit(request):
+def product_edit(request, pk):
     product = get_object_or_404(Product, pk=pk)
     if request.method == "POST":
         form = ProductForm(request.POST, instance=product)
         if form.is_valid():
-            product = form.save()
+            product = form.save(commit=False)
             product.updated_date = timezone.now()
             product.save()
             products = Product.objects.filter(created_date__lte=timezone.now())
