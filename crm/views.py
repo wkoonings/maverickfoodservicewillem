@@ -52,9 +52,9 @@ def service_new(request):
             service.save()
             services = Service.objects.filter(created_date__lte=timezone.now())
             return render(request, 'crm/service_list.html', {'services': services})
-        else:
-            form = ServiceForm()
-            return render(request, 'crm/service_new.html', {'form': form})
+    else:
+        form = ServiceForm()
+        return render(request, 'crm/service_new.html', {'form': form})
 
 @login_required()
 def service_edit(request, pk):
@@ -92,9 +92,9 @@ def product_new(request):
             product.save()
             products = Product.objects.filter(created_date__lte=timezone.now())
             return render(request, 'crm/product_list.html', {'products': products})
-        else:
-            form = ProductForm()
-            return render(request, 'crm/product_new.html', {'form': form})
+    else:
+        form = ProductForm()
+        return render(request, 'crm/product_new.html', {'form': form})
 
 @login_required()
 def product_delete(request, pk):
