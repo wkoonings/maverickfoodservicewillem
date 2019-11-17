@@ -4,6 +4,11 @@ from .models import *
 from .forms import *
 from django.db.models import Sum
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import CustomerSerializer
+
 now = timezone.now()
 def home(request):
     return render(request, 'crm/home.html', {'crm': home})
@@ -178,3 +183,11 @@ def edit(request):
                   'crm/edit.html',
                   {'user_form': user_form,
                    'profile_form': profile_form})
+
+
+class CustomerList(APIView):
+
+    def get(self, request):
+        customers_json = Customer.objects.all()
+        serializer = CustomerSerializer(customers_json, many=True)
+        return Response(serializer.data)
