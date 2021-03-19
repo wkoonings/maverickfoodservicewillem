@@ -7,7 +7,7 @@ whitenoise==4.0
 django-taggit==0.22.2
 django-crispy-forms>=1.7.2
 django-mathfilters==0.4.0
-pillow==5.1.0
+pillow==8.1.1
 djangorestframework==3.10.3
 
 
